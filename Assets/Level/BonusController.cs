@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class BonusController : MonoBehaviour {
 
-    static readonly float c_timeAtOnce = 0.3f;
+    static readonly float c_timeAtOnce = 1f;
     static readonly int c_requiredPonyAtOnce=5;
     float m_timeLeft;
     int m_ponyAtOnce;

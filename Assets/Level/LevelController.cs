@@ -11,7 +11,10 @@ public class LevelController : MonoBehaviour
     ControlGroup SelectedGroup;
     public SpriteRenderer GroupSelector;
 
+    int m_levelNumber = 1;
+    int m_numPoniesPerLevel=4;
     int m_numPonies;
+    
     float m_timeLeft;
     bool m_finished = false;
     void Awake()
@@ -27,9 +30,12 @@ public class LevelController : MonoBehaviour
     }
     void Start()
     {
+        m_numPoniesPerLevel ++;
+        
         m_finished = false;
-        m_timeLeft = 90;
-        m_numPonies = 20;
+        m_timeLeft = 90 - 5*(m_levelNumber/5);
+        m_numPonies = m_numPoniesPerLevel;
+       
         Initializer.Init(3,m_numPonies);
         m_objectGroup = Initializer.GetInitializedGroups();
         
@@ -38,6 +44,11 @@ public class LevelController : MonoBehaviour
     {
         Initializer.DestroyLevel();
         Start();
+    }
+    public void RestartFirstLevel()
+    {
+        m_levelNumber = 1;
+        m_numPoniesPerLevel = 4;
     }
     void Update()
     {
