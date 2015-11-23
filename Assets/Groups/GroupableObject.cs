@@ -8,11 +8,16 @@ public class GroupableObject : MonoBehaviour
     public ControlGroup ParentGroup;
     public void SetParent(ControlGroup parentGroup)
     {
-        ParentGroup = parentGroup;
+        if (ParentGroup == null)
+        {
+            ParentGroup = parentGroup;
+            transform.parent = parentGroup.transform;
+        }
     }
     public void Free()
     {
         ParentGroup = null;
+        transform.parent = LevelController.Instance.transform;
     }
     public void OnClick()
     {

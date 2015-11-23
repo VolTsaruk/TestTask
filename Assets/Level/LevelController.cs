@@ -14,6 +14,8 @@ public class LevelController : MonoBehaviour
 
     void Awake()
     {
+        if (m_instance != null)
+            Destroy(this);
         m_instance = this;
     }
     void Start()

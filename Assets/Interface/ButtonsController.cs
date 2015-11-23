@@ -11,6 +11,11 @@ public class ButtonsController : MonoBehaviour {
 
     void Awake()
     {
+        if (InterfaceController.ButtonController != null)
+        {
+            Destroy(this);
+        }
+
         InterfaceController.ButtonController = this;
     }
 
