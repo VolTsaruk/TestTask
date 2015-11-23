@@ -16,16 +16,18 @@ public class PonyAnimation : ObjectAnimationController
     }
     public override void Move()
     {
-        animator.SetTrigger(MoveHash);
+        animator.SetBool(MoveHash, true);
     }
 
     public override void Stop()
     {
         animator.SetTrigger(StopHash);
+        animator.SetBool(MoveHash, false);
     }
 
     public override void Win()
     {
         animator.SetTrigger(WinHash);
+        animator.SetBool(MoveHash, false);
     }
 }

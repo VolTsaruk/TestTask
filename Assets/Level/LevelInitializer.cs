@@ -44,11 +44,12 @@ public  class LevelInitializer:MonoBehaviour
     {
         foreach(ControlGroup x in m_groups)
         {
+            x.GetComponent<ControlGroup>().Reset();
             ObjectCreator.Destroy(x.gameObject, "ControlGroup");
         }
         foreach(Pony x in m_ponies)
         {
-            
+            x.GetComponent<Pony>().Reset();
             ObjectCreator.Destroy(x.gameObject, "Pony");
         }
         m_groups.Clear();
