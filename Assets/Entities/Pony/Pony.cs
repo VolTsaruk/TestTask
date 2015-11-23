@@ -9,16 +9,22 @@ public class Pony : MonoBehaviour {
         if (!m_finished)
         {
             GetComponent<GroupableObject>().SetParent(group);
+            group.AddObject(GetComponent<GroupableObject>());
+            GetComponent<ObjectAnimationController>().Move();
         }
     }
     public void Finish()
     {
         GetComponent<GroupableObject>().Free();
+
+        GetComponent<PonyAnimation>().Win();
         m_finished = true;
     }
     public void Reset()
     {
         m_finished = false;
+        GetComponent<PonyAnimation>().ResetAnimations();
+        
     }
 
 }

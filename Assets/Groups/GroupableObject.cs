@@ -16,6 +16,7 @@ public class GroupableObject : MonoBehaviour
     }
     public void Free()
     {
+        ParentGroup.FreeObject(this);
         ParentGroup = null;
         transform.parent = LevelController.Instance.transform;
     }
@@ -23,10 +24,6 @@ public class GroupableObject : MonoBehaviour
     {
         if (ParentGroup != null)
             ParentGroup.Activate();
-    }
-    public void ApplyMove(Vector2 direction)
-    {
-
     }
 
 }

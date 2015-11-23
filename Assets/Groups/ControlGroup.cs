@@ -47,6 +47,10 @@ public class ControlGroup : MonoBehaviour
     {
         m_destination = dest;
         m_hasDestination = true;
+        foreach(GroupableObject x in m_ChildObjects)
+        {
+            x.GetComponent<ObjectAnimationController>().Move();
+        }
     }
     public void OnUpdate(float deltaTime)
     {
@@ -57,11 +61,25 @@ public class ControlGroup : MonoBehaviour
         {
             speedDirection = direction;
             m_hasDestination=false;
+            foreach (GroupableObject x in m_ChildObjects)
+            {
+                x.GetComponent<ObjectAnimationController>().Stop();
+            }
         }
         transform.Translate(speedDirection);
     }
     public void Reset()
     {
         m_hasDestination = false;
+        m_ChildObjects.Clear();
+        m_ChildObjects.Add(GroupLeader.GetComponent<GroupableObject>());
+    }
+    public void AddObject(GroupableObject obj)
+    {
+        m_ChildObjects.Add(obj);
+    }
+    public void FreeObject(GroupableObject obj)
+    {
+        m_ChildObjects.Remove(obj);
     }
 }
