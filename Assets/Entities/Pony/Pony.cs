@@ -10,7 +10,10 @@ public class Pony : MonoBehaviour {
         {
             GetComponent<GroupableObject>().SetParent(group);
             group.AddObject(GetComponent<GroupableObject>());
-            GetComponent<ObjectAnimationController>().Move();
+            if (group.IsMoving)
+            {
+                GetComponent<ObjectAnimationController>().Move();
+            }
         }
     }
     public void Finish()

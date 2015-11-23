@@ -14,7 +14,7 @@ public class ControlGroup : MonoBehaviour
     Vector2 m_destination;
     bool m_hasDestination = false;
     public float MaxSpeed=1;
-    
+    public bool IsMoving { get { return m_hasDestination; } }
 
     public Color GroupColor
     {
