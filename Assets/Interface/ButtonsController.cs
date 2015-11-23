@@ -21,6 +21,7 @@ public class ButtonsController : MonoBehaviour {
         button.SetControlGroup(group);
         group.SetGroupButton(button);
         button.GetComponent<Toggle>().group = GetComponent<ToggleGroup>();
+        button.SetGroupColor(group.GroupColor);
         m_buttons.Add(button);
     }
 
