@@ -7,5 +7,8 @@ public static class ObjectCreator
     {
         return Object.Instantiate(prefab) as GameObject;
     }
-
+    public static void Destroy(GameObject obj, string categoryName)
+    {
+        Object.Destroy(obj);
+    }
 }

@@ -7,7 +7,8 @@ public class Paddock : MonoBehaviour
     {
         if (collider.tag == "Pony")
         {
-            collider.GetComponent<Pony>().Detach();
+            collider.GetComponent<Pony>().Finish();
+            LevelController.Instance.OnPonyEnterPaddock();
         }
     }
 }

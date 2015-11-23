@@ -15,8 +15,10 @@ public class ButtonsController : MonoBehaviour {
         {
             Destroy(this);
         }
-
-        InterfaceController.ButtonController = this;
+        else
+        {
+            InterfaceController.ButtonController = this;
+        }
     }
 
     public void AddButton(ControlGroup group)
@@ -41,6 +43,14 @@ public class ButtonsController : MonoBehaviour {
             m_buttons[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(left, 0);
             left += width;
         }
+    }
+    public void Reset()
+    {
+        foreach(GroupButton x in m_buttons)
+        {
+            ObjectCreator.Destroy(x.gameObject, "GroupButton");
+        }
+        m_buttons.Clear();
     }
 
 }

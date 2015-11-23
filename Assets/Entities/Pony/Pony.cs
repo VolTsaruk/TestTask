@@ -3,13 +3,18 @@ using System.Collections;
 
 public class Pony : MonoBehaviour {
 
+    bool m_finished = false;
     public void AttachToGroup(ControlGroup group)
     {
-        GetComponent<GroupableObject>().SetParent(group);
+        if (!m_finished)
+        {
+            GetComponent<GroupableObject>().SetParent(group);
+        }
     }
-    public void Detach()
+    public void Finish()
     {
         GetComponent<GroupableObject>().Free();
+        m_finished = true;
     }
 
 }
