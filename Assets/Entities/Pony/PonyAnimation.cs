@@ -4,14 +4,17 @@ using System;
 
 public class PonyAnimation : ObjectAnimationController
 {
-    int MoveHash = Animator.StringToHash("RunStateTrigger");
-    int StopHash = Animator.StringToHash("StopStateTrigger");
-    int WinHash = Animator.StringToHash("WinStateTrigger");
+    static int MoveHash = Animator.StringToHash("RunStateTrigger");
+    static int StopHash = Animator.StringToHash("StopStateTrigger");
+    static int WinHash = Animator.StringToHash("WinStateTrigger");
     public Animator animator;
+    public GameObject ponyDefaultPrefab;
     public void ResetAnimations()
     {
-        animator.playbackTime = 0;
+        int ChildCount = transform.childCount;
         animator.Rebind();
+
+        
         
     }
     public override void Move()
