@@ -10,6 +10,10 @@ public class Catcher : MonoBehaviour
         {
             collider.GetComponent<Pony>().AttachToGroup(parentDog.GetComponent<GroupableObject>().ParentGroup);
         }
+        else if(collider.tag=="Bonus")
+        {
+            collider.GetComponent<Bonus>().AddBonus();
+        }
     }
 
     

@@ -7,7 +7,7 @@ public class LevelController : MonoBehaviour
     static LevelController m_instance;
     List<ControlGroup> m_objectGroup = new List<ControlGroup>();
     public LevelInitializer Initializer;
-
+    public BonusController BonusControllerInstance;
     ControlGroup SelectedGroup;
     public SpriteRenderer GroupSelector;
 
@@ -29,7 +29,7 @@ public class LevelController : MonoBehaviour
     {
         m_finished = false;
         m_timeLeft = 90;
-        m_numPonies = 2;
+        m_numPonies = 20;
         Initializer.Init(3,m_numPonies);
         m_objectGroup = Initializer.GetInitializedGroups();
         
@@ -49,6 +49,8 @@ public class LevelController : MonoBehaviour
         {
             group.OnUpdate(Time.deltaTime);
         }
+        BonusControllerInstance.OnUpdate(Time.deltaTime);
+      
         SetSelectorPosition();
         if(m_timeLeft<0)
         {
@@ -80,10 +82,15 @@ public class LevelController : MonoBehaviour
     public void OnPonyEnterPaddock()
     {
         m_numPonies--;
+        BonusControllerInstance.AddPonyAtOnce();
         if(m_numPonies==0)
         {
             m_finished = true;
             InterfaceController.GameoverPanel.Init(true);
         }
+    }
+    public void AddTime(float deltaTime)
+    {
+        m_timeLeft += deltaTime;
     }
 }
