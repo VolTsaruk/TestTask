@@ -14,6 +14,7 @@ public  class LevelInitializer:MonoBehaviour
         group.transform.position = position;
         group.transform.parent = transform.parent;
         group.SetGroupColor(color);
+        group.Reset();
         m_groups.Add(group);
         InterfaceController.ButtonController.AddButton(group);
         
@@ -23,6 +24,7 @@ public  class LevelInitializer:MonoBehaviour
         Pony pony = ObjectCreator.Instantiate(PonyPrefab, "Pony").GetComponent<Pony>();
         pony.transform.parent = transform.parent;
         pony.transform.position = position;
+        pony.Reset();
         m_ponies.Add(pony);
     }
     public void Init(int numDogs=3, int numPonys=10)
@@ -46,6 +48,7 @@ public  class LevelInitializer:MonoBehaviour
         }
         foreach(Pony x in m_ponies)
         {
+            
             ObjectCreator.Destroy(x.gameObject, "Pony");
         }
         m_groups.Clear();

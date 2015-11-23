@@ -60,4 +60,8 @@ public class ControlGroup : MonoBehaviour
         }
         transform.Translate(speedDirection);
     }
+    public void Reset()
+    {
+        m_hasDestination = false;
+    }
 }

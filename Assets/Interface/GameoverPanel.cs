@@ -22,15 +22,16 @@ public class GameoverPanel : MonoBehaviour
         gameObject.SetActive(true);
         if (nextLevel)
         {
-            FinishText.text = "You win!\n Start next level?";
+            FinishText.text = "You win! Start next level?";
         }
         else
         {
-            FinishText.text = "Time's up!\n Retry?";
+            FinishText.text = "Time's up! Retry?";
         }
     }
     public void Restart()
     {
         gameObject.SetActive(false);
+        LevelController.Instance.Restart();
     }
 }

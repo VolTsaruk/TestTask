@@ -16,5 +16,9 @@ public class Pony : MonoBehaviour {
         GetComponent<GroupableObject>().Free();
         m_finished = true;
     }
+    public void Reset()
+    {
+        m_finished = false;
+    }
 
 }
